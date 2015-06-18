@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  author: MyString
-  isbn: MyString
-  review: MyText
-  rating: 1
-  genre: MyText
+  title: The Martian
+  author: Andy Weir
+  isbn: 123456
+  review: In space no one can hear you fart
+  rating: 5
+  genre: "{'fiction' => true}"
 
 two:
-  title: MyString
-  author: MyString
-  isbn: MyString
-  review: MyText
-  rating: 1
-  genre: MyText
+  title: Fresh Off the Boat
+  author: Eddie Huang
+  isbn: 0987654321
+  review: 'Cooking, Drinking, and Smoking'
+  rating: 3
+  genre: "{'cooking' => true, 'non-fiction' => true}"
