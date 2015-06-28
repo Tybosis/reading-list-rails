@@ -85,11 +85,11 @@
         this.book = {genre:{}};
 
         this.addReview = function(form){
+          this.book.genres = JSON.stringify(this.book.genres);
           $http.post('api/v1/books', this.book)
           .success(function(data) {
             $scope.$parent.books.unshift(data);
             $scope.$parent.showForm = false;
-            console.log(data);
           })
           .error(function(data, status) {
             console.log(status);
