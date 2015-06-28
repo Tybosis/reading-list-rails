@@ -208,3 +208,11 @@ p {
 h3 {
   font-size: 2em;
 }
+
+.list-unstyled li:first-child {
+  padding-left: 1em;
+}
+
+.list-unstyled li {
+  padding-right: 5px;
+}
