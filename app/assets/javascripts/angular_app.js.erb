@@ -14,6 +14,7 @@
     $scope.index = function() {
       $http.get('/api/v1/books')
         .success(function(data) {
+          data.map(function(e) { e.genres = JSON.parse(e.genres)});
           $scope.books = data.reverse();
         })
     };
@@ -37,7 +38,7 @@
   .directive('bookGenres', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/book-genres.html',
+      templateUrl: '<%= asset_path("angular-app/partials/book-genres.html") %>',
       scope: {
         genres: '='
       }
@@ -88,6 +89,7 @@
           this.book.genres = JSON.stringify(this.book.genres);
           $http.post('api/v1/books', this.book)
           .success(function(data) {
+            data.genres = JSON.parse(data.genres);
             $scope.$parent.books.unshift(data);
             $scope.$parent.showForm = false;
           })
