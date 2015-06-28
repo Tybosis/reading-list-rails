@@ -209,10 +209,10 @@ h3 {
   font-size: 2em;
 }
 
-.list-unstyled li:first-child {
+.list-unstyled .genre-list:first-child {
   padding-left: 1em;
 }
 
-.list-unstyled li {
+.list-unstyled .genre-list {
   padding-right: 5px;
 }
