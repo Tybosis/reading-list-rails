@@ -57,11 +57,19 @@
       restrict: 'E',
       templateUrl: '<%= asset_path("angular-app/partials/book-edit-form.html") %>',
       replace: true,
-      controller: function() {
+      controller: function($scope, $http) {
         this.showEditForm = false;
         this.edit_book = function(form, book) {
-          form.$setPristine();
+          $http.patch('/api/v1/books/' + book.id, book)
+            .success(function(data) {
+              form.$setPristine();
+            })
+            .error(function(data, status) {
+              console.log(status);
+              $scope.errors.push(status);
+            })
           this.showEditForm = false;
+
         }
       },
       controllerAs: "bookEditFormCtrl"
