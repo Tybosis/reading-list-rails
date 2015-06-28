@@ -1,14 +1,39 @@
 <h1>Angular Reading List of Awesome!</h1>
 
-<div ng-app="readingList">
-  <div ng-controller="ReadingListController">
-    <ul>
-      <li ng-repeat="book in books">
-        <p>{{book.title}}</p>
-        <img ng-src="http://images.amazon.com/images/P/{{book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{book.title}}" class="full">
-        <p>{{book.author}}</p>
+<div class="row" ng-controller="ReadingListController as readingListCtrl" ng-init="index()">
+
+  <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+  <hr />
+  <h3>Form Goes Here</h3>
+  <hr />
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="book row" ng-repeat="book in books">
+      <!-- Book Cover -->
+      <aside class="col-sm-3">
+
+        <a href="http://www.amazon.com/gp/product/{{book.isbn}}"><img ng-src="http://images.amazon.com/images/P/{{book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{book.title}}" class="full"></a>
+
+        <p ng-class="{goodRating: book.rating >= 3}" class="rating">{{book.rating}}/5</p>
+      </aside>
+
+      <!-- End Book Cover -->
+
+      <div class="col-sm-9">
+        <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{book.title}}</a></h3>
+
+        <cite class="text-muted">Written by {{book.author}}</cite>
+
+        <p>{{book.review}}</p>
+
         <br \>
-      </li>
-    </ul>
-  </div>
+        <div class="container">
+          <button class="btn btn-primary book_buttons" ng-click="readingListCtrl.delete_book(book)">Remove Book</button>
+
+          <button class="btn btn-primary book_buttons">Edit Book</button>
+        </div>
+
+    </li>
+  </ul>
 </div>
