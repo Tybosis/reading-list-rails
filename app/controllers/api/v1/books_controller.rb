@@ -28,8 +28,7 @@ module API
       private
 
       def book_params
-        params.permit(:title, :author, :isbn, :review, :rating,
-                      :genre)
+        params.permit(:title, :author, :isbn, :review, :rating, :genres)
       end
     end
   end
