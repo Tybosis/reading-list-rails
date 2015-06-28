@@ -1,0 +1,14 @@
+<h1>Angular Reading List of Awesome!</h1>
+
+<div ng-app="readingList">
+  <div ng-controller="ReadingListController">
+    <ul>
+      <li ng-repeat="book in books">
+        <p>{{book.title}}</p>
+        <img ng-src="http://images.amazon.com/images/P/{{book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{book.title}}" class="full">
+        <p>{{book.author}}</p>
+        <br \>
+      </li>
+    </ul>
+  </div>
+</div>
