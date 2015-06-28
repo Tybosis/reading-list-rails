@@ -1,15 +1,16 @@
-//= require_self
-//= require_tree ./angular_app
-
 (function() {
   angular.module('readingList', [])
 
   .config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-  }]);
+  }])
 
-  .controller('ReadingListController', function(){
-    this.books = books;
+  .run(function() {
+    console.log("Angular app is running!");
+  })
+
+  .controller('ReadingListController', function($scope){
+    $scope.books = books;
     this.genres = genres;
     this.showForm = false;
     this.delete_book = function(book) {
