@@ -9,10 +9,16 @@
     console.log("Angular app is running!");
   })
 
-  .controller('ReadingListController', function($scope){
-    $scope.books = books;
+  .controller('ReadingListController', function($scope, $http){
+    $scope.books = {}
+    $scope.index = function() {
+      $http.get('/api/v1/books')
+        .success(function(data) {
+          $scope.books = data.reverse();
+        })
+    };
     this.genres = genres;
-    this.showForm = false;
+    $scope.showForm = false;
     this.delete_book = function(book) {
       if(confirm("Are you sure you want to remove this book?")) {
         var index = books.map(function(e) { return e.title }).indexOf(book.title);
