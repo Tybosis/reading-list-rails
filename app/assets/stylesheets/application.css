@@ -186,3 +186,25 @@ div.genre {
 .book_buttons {
   margin: 10px 0 10px 0;
 }
+
+
+/************************************************************************
+  PAGE CONTENT(TEXT)
+************************************************************************/
+
+#main-header {
+  color: #3276B1;
+  padding-bottom: 20px;
+  font-size: 60px;
+  font-family: 'Bevan', cursive;
+  text-align: center;
+}
+
+p {
+  font-family: 'Lato', serif;
+  padding-top: 1em;
+}
+
+h3 {
+  font-size: 2em;
+}
