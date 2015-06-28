@@ -14,17 +14,17 @@
     $scope.index = function() {
       $http.get('/api/v1/books')
         .success(function(data) {
-          $rootScope.books = data.reverse();
+          $scope.books = data.reverse();
         })
     };
     this.genres = genres;
-    this.showForm = false;
+    $scope.showForm = false;
     $scope.delete_book = function(book) {
       if(confirm("Are you sure you want to remove this book?")) {
         $http.delete('/api/v1/books/' + book.id)
           .success(function() {
-            var index = $rootScope.books.map(function(e) { return e.id; }).indexOf(book.id);
-            $rootScope.books.splice(index, 1);
+            var index = $scope.books.map(function(e) { return e.id; }).indexOf(book.id);
+            $scope.books.splice(index, 1);
           })
           .error(function(data, status) {
             console.log(status);
@@ -81,13 +81,14 @@
       restrict: 'E',
       templateUrl: '<%= asset_path("angular-app/partials/review-form.html") %>',
       replace: true,
-      controller: function($rootScope, $http){
+      controller: function($http, $scope){
         this.book = {genres:{}};
 
         this.addReview = function(form){
           $http.post('api/v1/books', this.book)
           .success(function(data) {
-            $rootScope.books.unshift(data);
+            $scope.$parent.books.unshift(data);
+            $scope.$parent.showForm = false;
           })
           .error(function(data, status) {
             console.log(status);
