@@ -4,7 +4,7 @@
 
   <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
   <hr />
-  <h3>Form Goes Here</h3>
+  <review-form change-review-form="readingListCtrl.changeReviewForm" books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="readingListCtrl.showForm"></review-form>
   <hr />
 
   <ul class="list-unstyled col-sm-8">
@@ -29,7 +29,7 @@
 
         <br \>
         <div class="container">
-          <button class="btn btn-primary book_buttons" ng-click="readingListCtrl.delete_book(book)">Remove Book</button>
+          <button class="btn btn-primary book_buttons" ng-click="delete_book(book)">Remove Book</button>
 
           <button class="btn btn-primary book_buttons">Edit Book</button>
         </div>

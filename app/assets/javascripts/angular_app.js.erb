@@ -9,22 +9,29 @@
     console.log("Angular app is running!");
   })
 
-  .controller('ReadingListController', function($scope, $http){
-    $scope.books = {}
+  .controller('ReadingListController', function($rootScope, $scope, $http){
+    $rootScope.books = {}
     $scope.index = function() {
       $http.get('/api/v1/books')
         .success(function(data) {
-          $scope.books = data.reverse();
+          $rootScope.books = data.reverse();
         })
     };
     this.genres = genres;
     this.showForm = false;
-    this.delete_book = function(book) {
+    $scope.delete_book = function(book) {
       if(confirm("Are you sure you want to remove this book?")) {
-        var index = books.map(function(e) { return e.title }).indexOf(book.title);
-        books.splice(index, 1);
-      }
-    }
+        $http.delete('/api/v1/books/' + book.id)
+          .success(function() {
+            var index = $rootScope.books.map(function(e) { return e.id; }).indexOf(book.id);
+            $rootScope.books.splice(index, 1);
+          })
+          .error(function(data, status) {
+            console.log(status);
+            $scope.errors.push(status);
+          });
+      };
+    };
   })
 
   .directive('bookGenres', function(){
@@ -64,15 +71,22 @@
   .directive('reviewForm', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/review-form.html',
+      templateUrl: '<%= asset_path("angular-app/partials/review-form.html") %>',
       replace: true,
-      controller: function(){
+      controller: function($rootScope, $http){
         this.book = {genres:{}};
 
         this.addReview = function(form){
-          books.push(this.book);
+          $http.post('api/v1/books', this.book)
+          .success(function(data) {
+            $rootScope.books.unshift(data);
+          })
+          .error(function(data, status) {
+            console.log(status);
+            $scope.errors.push(status)
+          });
           this.book = {genres:{}};
-          form.$setPristine();
+
         }
       },
       controllerAs: 'reviewFormCtrl',
