@@ -47,7 +47,7 @@
   .directive('bookCover', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/book-cover.html',
+      templateUrl: '<%= asset_path("angular-app/partials/book-cover.html") %>',
       replace: true
     }
   })
@@ -55,7 +55,7 @@
   .directive('bookEditForm', function(){
     return {
       restrict: 'E',
-      templateUrl: 'partials/book-edit-form.html',
+      templateUrl: '<%= asset_path("angular-app/partials/book-edit-form.html") %>',
       replace: true,
       controller: function() {
         this.showEditForm = false;
