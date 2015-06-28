@@ -9,8 +9,8 @@
     console.log("Angular app is running!");
   })
 
-  .controller('ReadingListController', function($rootScope, $scope, $http){
-    $rootScope.books = {}
+  .controller('ReadingListController', function($scope, $http){
+    $scope.books = {}
     $scope.index = function() {
       $http.get('/api/v1/books')
         .success(function(data) {
@@ -82,19 +82,20 @@
       templateUrl: '<%= asset_path("angular-app/partials/review-form.html") %>',
       replace: true,
       controller: function($http, $scope){
-        this.book = {genres:{}};
+        this.book = {genre:{}};
 
         this.addReview = function(form){
           $http.post('api/v1/books', this.book)
           .success(function(data) {
             $scope.$parent.books.unshift(data);
             $scope.$parent.showForm = false;
+            console.log(data);
           })
           .error(function(data, status) {
             console.log(status);
             $scope.errors.push(status)
           });
-          this.book = {genres:{}};
+          this.book = {genre:{}};
 
         }
       },
