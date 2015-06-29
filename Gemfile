@@ -18,4 +18,6 @@ group :development, :test do
   gem 'spring'
   gem 'web-console', '~> 2.0'
   gem 'minitest-rails-capybara'
+  gem 'poltergeist'
+  gem 'capybara-webkit'
 end
