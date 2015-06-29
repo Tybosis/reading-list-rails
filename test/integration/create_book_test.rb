@@ -3,9 +3,9 @@ require 'test_helper'
 class CreatingBookTest < ActionDispatch::IntegrationTest
   test 'creating a new book' do
     post "/api/v1/books",
-      { title: 'The Stranger', author: "Albert Camus", isbn: 8438384,
+      { title: "The Stranger", author: "Albert Camus", isbn: 8438384,
         review: "Existentialism at its finest", rating: 5,
-        genre: "{'fiction' => true}" }
+        genres: "{'fiction' => true}" }
     assert_equal 201, response.status
     assert_equal Mime::JSON, response.content_type
     book = json(response.body)
