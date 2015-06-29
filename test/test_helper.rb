@@ -4,6 +4,16 @@ require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/pride'
+require 'capybara/poltergeist'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+
+Capybara.javascript_driver = :webkit
+
+Capybara::Webkit.configure do |config|
+  config.allow_unknown_urls
+end
 
 class ActionDispatch::IntegrationTest
   include Rails.application.routes.url_helpers
