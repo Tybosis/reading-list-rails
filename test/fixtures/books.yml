@@ -6,12 +6,12 @@ one:
   isbn: 123456
   review: In space no one can hear you fart
   rating: 5
-  genre: "{'fiction' => true}"
+  genres: '[{"fiction":"true"}]'
 
 two:
   title: Fresh Off the Boat
   author: Eddie Huang
   isbn: 0987654321
-  review: 'Cooking, Drinking, and Smoking'
+  review: "Cooking, Drinking, and Smoking"
   rating: 3
-  genre: "{'cooking' => true, 'non-fiction' => true}"
+  genres: '[{"non-fiction":"true"}]'
