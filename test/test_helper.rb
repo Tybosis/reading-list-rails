@@ -5,9 +5,6 @@ require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/pride'
 require 'capybara/poltergeist'
-require 'database_cleaner'
-
-DatabaseCleaner.strategy = :truncation
 
 Capybara.javascript_driver = :webkit
 
