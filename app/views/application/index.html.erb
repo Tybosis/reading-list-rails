@@ -7,12 +7,12 @@
   <review-form change-review-form="readingListCtrl.changeReviewForm" books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="showForm"></review-form>
   <hr />
 
-  <ul class="list-unstyled col-sm-8">
+  <ul class="list-unstyled col-sm-12">
     <li class="book row" ng-repeat="book in books">
       <!-- Book Cover -->
       <book-cover></book-cover>
       <!-- End Book Cover -->
-      <div class="col-sm-9">
+      <div class="col-sm-10">
         <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
             >{{book.title}}</a></h3>
 
