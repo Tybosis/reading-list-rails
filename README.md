@@ -1,5 +1,7 @@
 # Reading List
 
+<a href="https://codeclimate.com/github/Tybosis/reading-list-rails"><img src="https://codeclimate.com/github/Tybosis/reading-list-rails/badges/gpa.svg" /></a>
+
 By Tyler Pottle
 
 ## Description
