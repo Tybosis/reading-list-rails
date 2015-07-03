@@ -4,7 +4,6 @@ require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/pride'
-require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :webkit
 
@@ -28,3 +27,20 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+# database transaction setup
+# It is also possible to force your ORM to use the same transaction for all
+# threads. This may have thread safety implications and could cause strange
+# failures, so use caution with this approach. It can be implemented in
+# ActiveRecord through the following monkey patch:
+
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
