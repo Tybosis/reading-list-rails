@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'angularjs-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
