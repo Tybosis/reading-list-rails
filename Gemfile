@@ -13,6 +13,7 @@ gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'angularjs-rails'
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 
 group :development, :test do
   gem 'byebug'
