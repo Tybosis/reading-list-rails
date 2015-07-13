@@ -1,6 +1,7 @@
 module API
   module V1
     class BaseController < ApplicationController
+      acts_as_token_authentication_handler_for User
 
       private
 
